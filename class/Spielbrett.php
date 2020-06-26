@@ -8,7 +8,7 @@ class Spielbrett
      * PK
      */
     private int $id;
-    private string $etage;
+    private int $etage; // -1, 0 ,1 zZt.
     private string $zeitebene;
     private array $spielfelder = []; // typ Spielfeld
 

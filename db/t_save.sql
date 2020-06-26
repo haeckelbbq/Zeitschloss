@@ -23,3 +23,8 @@ INSERT INTO t_save (id, user_id, name, zeitstempel, daten)
         VALUES(NULL, 1, 'Speicherstand 3', '2020-06-25 12:30:00','Testdaten 3');
 
 -- für 1. Anzeige Spielbrett
+CREATE TABLE t_spielbrett(id INT PRIMARY KEY AUTO_INCREMENT, etage INT, zeitebene VARCHAR(45));
+
+CREATE TABLE t_spielfeld(id INT PRIMARY KEY AUTO_INCREMENT, spielbrett_id INT);
+
+
