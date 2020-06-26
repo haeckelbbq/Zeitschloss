@@ -1,13 +1,12 @@
 <?php
-
+include 'config.php';
 spl_autoload_register(function ($class){
     include 'class/' . $class . '.php';
 });
 
-$view = '';
 $action = $_REQUEST['action'] ?? '';
-
-
+$view = 'spielbrett1';
+$action = 'showSp1';
 
 switch($action) {
 
@@ -37,7 +36,11 @@ switch($action) {
 
         break;
     }
+    case 'showSp1':
+        $view = 'spielbrett1';
+        $spielbrett = Spielbrett::getSpielbrettById(1);
 
+        break;
     default:
     {
 

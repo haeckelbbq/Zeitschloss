@@ -1,8 +1,8 @@
 -- DDL (data definition language bezieht sich auf die Struktur der Datenbank)
-DROP DATABASE IF EXISTS db_zeitschloss;
+DROP DATABASE IF EXISTS zeitschloss;
 
-CREATE DATABASE db_zeitschloss;
-USE db_zeitschloss;
+CREATE DATABASE zeitschloss;
+USE zeitschloss;
 
 CREATE TABLE t_user (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(45) NOT NULL, passwort VARCHAR(45) NOT NULL,
                                    statistikTode INT, statistikKills INT, statistikSpielA INT, statistikSpielB INT,
@@ -24,7 +24,21 @@ INSERT INTO t_save (id, user_id, name, zeitstempel, daten)
 
 -- für 1. Anzeige Spielbrett
 CREATE TABLE t_spielbrett(id INT PRIMARY KEY AUTO_INCREMENT, etage INT, zeitebene VARCHAR(45));
+INSERT INTO t_spielbrett (id, etage, zeitebene) VALUES (NULL, 0, 'Gegenwart');
 
-CREATE TABLE t_spielfeld(id INT PRIMARY KEY AUTO_INCREMENT, spielbrett_id INT);
+CREATE TABLE t_spielfeld(id INT PRIMARY KEY AUTO_INCREMENT, spielbrett_id INT, kartennebel BOOL, x int, y int);
+INSERT INTO t_spielfeld(id, spielbrett_id, kartennebel, x, y) VALUES(NULL, 1, TRUE, 0, 0);
+INSERT INTO t_spielfeld(id, spielbrett_id, kartennebel, x, y) VALUES(NULL, 1, TRUE, 1, 0);
+INSERT INTO t_spielfeld(id, spielbrett_id, kartennebel, x, y) VALUES(NULL, 1, TRUE, 2, 0);
+INSERT INTO t_spielfeld(id, spielbrett_id, kartennebel, x, y) VALUES(NULL, 1, TRUE, 0, 1);
+INSERT INTO t_spielfeld(id, spielbrett_id, kartennebel, x, y) VALUES(NULL, 1, TRUE, 1, 1);
+INSERT INTO t_spielfeld(id, spielbrett_id, kartennebel, x, y) VALUES(NULL, 1, TRUE, 2, 1);
+INSERT INTO t_spielfeld(id, spielbrett_id, kartennebel, x, y) VALUES(NULL, 1, TRUE, 0, 2);
+INSERT INTO t_spielfeld(id, spielbrett_id, kartennebel, x, y) VALUES(NULL, 1, TRUE, 1, 2);
+INSERT INTO t_spielfeld(id, spielbrett_id, kartennebel, x, y) VALUES(NULL, 1, TRUE, 2, 2);
 
+CREATE TABLE t_gegenstand(id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(45), spielfeld_id INT NULL);
+INSERT INTO t_gegenstand(id, name) VALUES (NULL, 'rostiger Schlüssel', 6);
 
+-- CREATE TABLE t_item(id INT PRIMARY KEY AUTO_INCREMENT, gegenstand_id INT);
+-- INSERT INTO t_item(id, gegenstand_id) VALUES (NULL, 1);
