@@ -38,7 +38,7 @@ INSERT INTO t_spielfeld(id, spielbrett_id, kartennebel, x, y) VALUES(NULL, 1, TR
 INSERT INTO t_spielfeld(id, spielbrett_id, kartennebel, x, y) VALUES(NULL, 1, TRUE, 2, 2);
 
 CREATE TABLE t_gegenstand(id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(45), spielfeld_id INT NULL);
-INSERT INTO t_gegenstand(id, name) VALUES (NULL, 'rostiger Schlüssel', 6);
+INSERT INTO t_gegenstand(id, name, spielfeld_id) VALUES (NULL, 'rostiger Schlüssel', 6);
 
 -- CREATE TABLE t_item(id INT PRIMARY KEY AUTO_INCREMENT, gegenstand_id INT);
 -- INSERT INTO t_item(id, gegenstand_id) VALUES (NULL, 1);

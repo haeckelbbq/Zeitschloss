@@ -8,6 +8,7 @@ class Spielfeld
     private bool $kartennebel;
     private int $x;
     private int $y;
+    private Gegenstand $gegenstand;
 
     /**
      * Spielfeld constructor.
@@ -24,6 +25,15 @@ class Spielfeld
         $this->kartennebel = $kartennebel;
         $this->x = $x;
         $this->y = $y;
+        $this->loadGegenstand();
+    }
+
+    /**
+     * @param Gegenstand $gegenstand
+     */
+    public function setGegenstand(Gegenstand $gegenstand): void
+    {
+        $this->gegenstand = $gegenstand;
     }
 
     /**
@@ -63,5 +73,8 @@ class Spielfeld
     {
         return new Spielfeld($id, $spielbrett_id, $kartennebel, $x, $y);
     }
-
+    private function loadGegenstand():void
+    {
+        Gegenstand::getGegenstandBySpielfeldId($this);
+    }
 }
