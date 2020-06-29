@@ -9,6 +9,7 @@ class Spielfeld
     private int $x;
     private int $y;
     private Gegenstand $gegenstand;
+    private NSC $nsc;
 
     /**
      * Spielfeld constructor.
@@ -26,6 +27,7 @@ class Spielfeld
         $this->x = $x;
         $this->y = $y;
         $this->loadGegenstand();
+        $this->loadNSC();
     }
 
     /**
@@ -37,6 +39,14 @@ class Spielfeld
     }
 
     /**
+     * @param NSC $nsc
+     */
+    public function setNSC(NSC $nsc): void
+    {
+        $this->nsc = $nsc;
+    }
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -44,13 +54,12 @@ class Spielfeld
         return $this->id;
     }
 
-
     public function aktualisieren() : void {
 
     }
+
     public static function loadSpielfelder(Spielbrett $spielbrett) : void
     {
-
         try
         {
             $dbh = Db::getConnection();
@@ -67,14 +76,20 @@ class Spielfeld
         {
             echo 'Connection failed: ' . $e->getMessage();
         }
-
     }
+
         public static function buildFromPDO(int $id, int $spielbrett_id, bool $kartennebel, int $x, int $y) : Spielfeld // buildFromPDO ruft den Klassenkonstuktor bei der Datenbankabfrage auf und erzeugt pro Tupel ein eigenes Objekt
     {
         return new Spielfeld($id, $spielbrett_id, $kartennebel, $x, $y);
     }
+
     private function loadGegenstand():void
     {
         Gegenstand::getGegenstandBySpielfeldId($this);
+    }
+
+    private function loadNSC():void
+    {
+        NSC::getNSCBySpielfeldId($this);
     }
 }

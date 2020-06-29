@@ -39,6 +39,17 @@ INSERT INTO t_spielfeld(id, spielbrett_id, kartennebel, x, y) VALUES(NULL, 1, TR
 
 CREATE TABLE t_gegenstand(id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(45), spielfeld_id INT NULL);
 INSERT INTO t_gegenstand(id, name, spielfeld_id) VALUES (NULL, 'rostiger Schlüssel', 6);
+INSERT INTO t_gegenstand(id, name, spielfeld_id) VALUES (NULL, 'kleines Lederetui', 6);
 
+-- Erweiterung Anzeige NSCs
+CREATE TABLE t_nsc(id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(45), spielfeld_id INT NULL, leben INT, ausdauer INT, schaden INT, schutz INT, typ INT);
+INSERT INTO t_nsc(id, name, spielfeld_id, leben, ausdauer, schaden, schutz, typ)
+        VALUES (NULL, 'verfaulter Zombie', 3, 20, 1000, 3, 2, 0);
+INSERT INTO t_nsc(id, name, spielfeld_id, leben, ausdauer, schaden, schutz, typ)
+        VALUES (NULL, 'wandelnde Ritterrüstung', 5, 30, 15, 2, 4, 1);
+INSERT INTO t_nsc(id, name, spielfeld_id, leben, ausdauer, schaden, schutz, typ)
+        VALUES (NULL, 'rote Fledermaus', 1, 10, 10, 1, 0, 2);
+INSERT INTO t_nsc(id, name, spielfeld_id, leben, ausdauer, schaden, schutz, typ)
+        VALUES (NULL, 'fette Wolfsspinne', 6, 14, 24, 5, 0, 2);
 -- CREATE TABLE t_item(id INT PRIMARY KEY AUTO_INCREMENT, gegenstand_id INT);
 -- INSERT INTO t_item(id, gegenstand_id) VALUES (NULL, 1);
