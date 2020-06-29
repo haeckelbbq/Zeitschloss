@@ -11,6 +11,37 @@ class Spielfeld
     private string $name;
     private bool $kartennebel;
 
+    /**
+     * @return bool
+     */
+    public function isKartennebel(): bool
+    {
+        return $this->kartennebel;
+    }
+
+    /**
+     * @param bool $kartennebel
+     */
+    public function setKartennebel(bool $kartennebel): void
+    {
+        $this->kartennebel = $kartennebel;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
 
     public function getPosX(): int
     {
@@ -52,16 +83,17 @@ class Spielfeld
         $this->posT = $posT;
     }
 
-    public function __construct(int $posX, int $posY, int $posZ, int $posT)
+    public function __construct(int $posX, int $posY, int $posZ, int $posT, string $name, bool $kartennebel)
     {
         $this->posX = $posX;
         $this->posY = $posY;
         $this->posZ = $posZ;
         $this->posT = $posT;
+        $this->name = $name;
+        $this->kartennebel = $kartennebel;
     }
 
     public function aktualisieren() : void {
 
     }
-
 }

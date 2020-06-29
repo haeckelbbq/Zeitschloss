@@ -4,10 +4,18 @@
 class Save
 {
 
+    /*
+     * INT
+     */
     private int $id;
+    /*
+     * VARCHAR(45)
+     */
     private string $name;
-    private string $date; // string oder date??
-
+    /*
+     * DATETIME (YYYY-MM-DD hh:mm:ss)
+     */
+    private string $date;
 
     public function getId(): int
     {
@@ -18,7 +26,6 @@ class Save
     {
         return $this->name;
     }
-
     public function setName(string $name): void
     {
         $this->name = $name;
@@ -28,7 +35,6 @@ class Save
     {
         return $this->date;
     }
-
     public function setDate(string $date): void // string oder date??
     {
         $this->date = $date;

@@ -100,11 +100,18 @@ class User
         $this->erfolg2 = $erfolg2;
     }
 
-    public function __construct(int $id, string $name, string $passwort)
+    public function __construct(int $id, string $name, string $passwort, int $statistikTode, int $statistikKills,
+                                int $statistikSpielA, int $statistikSpielO, bool $erfolg1, bool $erfolg2)
     {
         $this->id = $id;
         $this->name = $name;
         $this->passwort = $passwort;
+        $this->statistikTode = $statistikTode;
+        $this->statistikKills = $statistikKills;
+        $this->statistikSpielA = $statistikSpielA;
+        $this->statistikSpielO = $statistikSpielO;
+        $this->erfolg1 = $erfolg1;
+        $this->erfolg2 = $erfolg2;
     }
 
     public function getDataFromDatabase() : array {

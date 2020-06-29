@@ -1,8 +1,8 @@
 -- DDL (data definition language bezieht sich auf die Struktur der Datenbank)
--- veraltet: DROP DATABASE IF EXISTS db_zeitschloss;
+-- veraltet: DROP DATABASE IF EXISTS zeitschloss;
 
-CREATE DATABASE IF NOT EXISTS db_zeitschloss;
-USE db_zeitschloss;
+CREATE DATABASE IF NOT EXISTS zeitschloss;
+USE zeitschloss;
 
 CREATE TABLE IF NOT EXISTS t_user (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(45) NOT NULL, passwort VARCHAR(45) NOT NULL,
                                    statistikTode INT, statistikKills INT, statistikSpielA INT, statistikSpielB INT,
