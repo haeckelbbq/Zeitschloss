@@ -20,10 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ea26c09-06a6-486c-89b7-4fb772dbdf0f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/class/NSC.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/class/Character.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/Gegenstand.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/Gegenstand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/NSC.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/NSC.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/Spielfeld.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/Spielfeld.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/t_save.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/ddl_dml.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/ddl_dml.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/ddl_dml.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593175818041</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="NSC eingebaut">
+      <created>1593417627234</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1593417627234</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,29 +173,31 @@
     <MESSAGE value="pullbedingt" />
     <MESSAGE value="nicht im branch gearbeitet" />
     <MESSAGE value="Spielbrett mit Spielfeldern funktioniert zum Auslesen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Spielbrett mit Spielfeldern funktioniert zum Auslesen" />
+    <MESSAGE value="NSC eingebaut" />
+    <option name="LAST_COMMIT_MESSAGE" value="NSC eingebaut" />
   </component>
   <component name="WindowStateProjectService">
     <state x="475" y="55" key="#PHP" timestamp="1592828721358">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="475" y="55" key="#PHP/0.0.1536.824@0.0.1536.824" timestamp="1592828721358" />
-    <state x="608" y="173" key="#com.intellij.ide.util.MemberChooser" timestamp="1593414220094">
+    <state x="608" y="173" key="#com.intellij.ide.util.MemberChooser" timestamp="1593427464587">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="486" y="145" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720@0.0.1280.720" timestamp="1593177010595" />
     <state x="583" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1592994184725" />
-    <state x="608" y="173" key="#com.intellij.ide.util.MemberChooser/0.0.1600.860/-1920.-182.1920.1040@0.0.1600.860" timestamp="1593414220094" />
+    <state x="608" y="173" key="#com.intellij.ide.util.MemberChooser/0.0.1600.860/-1920.-182.1920.1040@0.0.1600.860" timestamp="1593427464587" />
     <state x="729" y="210" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1592994756782" />
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592892040146">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592892040146" />
-    <state x="327" y="0" key="CommitChangelistDialog2" timestamp="1593175816027">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state x="409" y="0" key="CommitChangelistDialog2" timestamp="1593417626546">
+      <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="327" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1593175816027" />
     <state x="392" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592834259368" />
+    <state x="409" y="0" key="CommitChangelistDialog2/0.0.1600.860/-1920.-182.1920.1040@0.0.1600.860" timestamp="1593417626546" />
     <state x="47" y="78" key="DiffContextDialog" timestamp="1593154650935">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -200,12 +212,12 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="184" y="86" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592892148173" />
-    <state x="596" y="141" key="NewPhpClassDialog" timestamp="1593413534405">
+    <state x="596" y="141" key="NewPhpClassDialog" timestamp="1593423652612">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="477" y="118" key="NewPhpClassDialog/0.0.1280.720@0.0.1280.720" timestamp="1593175685580" />
     <state x="573" y="135" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1592994040576" />
-    <state x="596" y="141" key="NewPhpClassDialog/0.0.1600.860/-1920.-182.1920.1040@0.0.1600.860" timestamp="1593413534405" />
+    <state x="596" y="141" key="NewPhpClassDialog/0.0.1600.860/-1920.-182.1920.1040@0.0.1600.860" timestamp="1593423652612" />
     <state x="716" y="170" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592994562707" />
     <state x="503" y="294" key="NewPhpFileDialog" timestamp="1593171705038">
       <screen x="0" y="0" width="1280" height="720" />

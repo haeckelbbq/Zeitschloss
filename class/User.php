@@ -169,5 +169,4 @@ class User
     public function buildStatistik() : void {
 
     }
-
 }

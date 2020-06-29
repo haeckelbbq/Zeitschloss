@@ -10,6 +10,7 @@ class Spielfeld
     private int $y;
     private Gegenstand $gegenstand;
     private NSC $nsc;
+    private Character $character;
 
     /**
      * Spielfeld constructor.
@@ -26,8 +27,10 @@ class Spielfeld
         $this->kartennebel = $kartennebel;
         $this->x = $x;
         $this->y = $y;
-        $this->loadGegenstand();
+        $this->loadGegenstand(0);
+        $this->loadGegenstand(1); //##
         $this->loadNSC();
+        $this->loadCharacter();
     }
 
     /**
@@ -44,6 +47,14 @@ class Spielfeld
     public function setNSC(NSC $nsc): void
     {
         $this->nsc = $nsc;
+    }
+
+    /**
+     * @param Character $character
+     */
+    public function setCharacter(Character $character): void
+    {
+        $this->character = $character;
     }
 
     /**
@@ -83,13 +94,18 @@ class Spielfeld
         return new Spielfeld($id, $spielbrett_id, $kartennebel, $x, $y);
     }
 
-    private function loadGegenstand():void
+    private function loadGegenstand($index):void
     {
-        Gegenstand::getGegenstandBySpielfeldId($this);
+        Gegenstand::getGegenstandBySpielfeldId($this, $index);
     }
 
     private function loadNSC():void
     {
         NSC::getNSCBySpielfeldId($this);
+    }
+
+    private function loadCharacter():void
+    {
+        Character::getCharacterBySpielfeldId($this);
     }
 }

@@ -46,7 +46,7 @@ class Gegenstand
         return $this->spielfeld_id;
     }
 
-    public static function getGegenstandBySpielfeldId(Spielfeld $spielfeld): void
+    public static function getGegenstandBySpielfeldId(Spielfeld $spielfeld, $index): void
     {
         try
         {
@@ -54,20 +54,20 @@ class Gegenstand
             //DB abfragen
             $sql = 'SELECT * FROM t_gegenstand WHERE spielfeld_id = :spielfeld_id';
             $sth = $dbh->prepare($sql);
-            $spielfeld_id = $spielfeld->getId();echo $spielfeld_id;
+            $spielfeld_id = $spielfeld->getId();
             $sth->bindParam('spielfeld_id', $spielfeld_id, PDO::PARAM_INT);
             $sth->execute();
             $gegenstaende = $sth->fetchAll(PDO::FETCH_FUNC, 'Gegenstand::buildFromPDO');
-            if (isset($gegenstaende[0])){
-                $spielfeld->setGegenstand($gegenstaende[0]);
+            if (isset($gegenstaende[$index])){
+                $spielfeld->setGegenstand($gegenstaende[$index]);
             }
         }
         catch (PDOException $e)
         {
             echo 'Connection failed: ' . $e->getMessage();
         }
-
     }
+
     public static function buildFromPDO(int $id, string $name, int $spielfeld_id) : Gegenstand // buildFromPDO ruft den Klassenkonstuktor bei der Datenbankabfrage auf und erzeugt pro Tupel ein eigenes Objekt
     {
         return new Gegenstand($id, $name, $spielfeld_id);

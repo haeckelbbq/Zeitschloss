@@ -39,10 +39,13 @@ INSERT INTO t_spielfeld(id, spielbrett_id, kartennebel, x, y) VALUES(NULL, 1, TR
 
 CREATE TABLE t_gegenstand(id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(45), spielfeld_id INT NULL);
 INSERT INTO t_gegenstand(id, name, spielfeld_id) VALUES (NULL, 'rostiger Schlüssel', 6);
-INSERT INTO t_gegenstand(id, name, spielfeld_id) VALUES (NULL, 'kleines Lederetui', 6);
+INSERT INTO t_gegenstand(id, name, spielfeld_id) VALUES (NULL, 'kleines Lederetui', 5);
+INSERT INTO t_gegenstand(id, name, spielfeld_id) VALUES (NULL, 'goldener Knopf', 5);
 
 -- Erweiterung Anzeige NSCs
-CREATE TABLE t_nsc(id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(45), spielfeld_id INT NULL, leben INT, ausdauer INT, schaden INT, schutz INT, typ INT);
+CREATE TABLE t_nsc(id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(45), spielfeld_id INT NULL,
+                    leben INT, ausdauer INT, schaden INT, schutz INT, typ INT);
+
 INSERT INTO t_nsc(id, name, spielfeld_id, leben, ausdauer, schaden, schutz, typ)
         VALUES (NULL, 'verfaulter Zombie', 3, 20, 1000, 3, 2, 0);
 INSERT INTO t_nsc(id, name, spielfeld_id, leben, ausdauer, schaden, schutz, typ)
@@ -51,5 +54,24 @@ INSERT INTO t_nsc(id, name, spielfeld_id, leben, ausdauer, schaden, schutz, typ)
         VALUES (NULL, 'rote Fledermaus', 1, 10, 10, 1, 0, 2);
 INSERT INTO t_nsc(id, name, spielfeld_id, leben, ausdauer, schaden, schutz, typ)
         VALUES (NULL, 'fette Wolfsspinne', 6, 14, 24, 5, 0, 2);
+
+-- Erweiterung Anzeige Character
+CREATE TABLE t_character(id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(45), spielfeld_id INT NULL,
+                   leben INT, ausdauer INT, schaden INT, schutz INT, geschlecht VARCHAR(8), klasse VARCHAR(45),
+                   attrSt INT, attrGe INT, attrIn INT, attrWa INT, attrCh INT, attrGl INT,
+                   fertigkeit1 INT, fertigkeit2 INT, talent1 VARCHAR(45), talent2 VARCHAR(45),
+                   ep INT, aktuelleWaffe VARCHAR(45), aktuelleRuest VARCHAR(45));
+
+INSERT INTO t_character(id, name, spielfeld_id,
+                leben, ausdauer, schaden, schutz, geschlecht, klasse,
+                attrSt, attrGe, attrIn, attrWa, attrCh, attrGl,
+                fertigkeit1, fertigkeit2, talent1, talent2,
+                ep, aktuelleWaffe, aktuelleRuest)
+        VALUES (NULL, 'Thomas Morton', 7,
+                18, 10, 2, 1, 'männlich', 'Internatsschüler',
+                8, 14, 13, 13, 14, 9,
+                4, 2, 'Latein', 'Feine Nase',
+                0, 'Brotmesser', 'Schuluniform');
+
 -- CREATE TABLE t_item(id INT PRIMARY KEY AUTO_INCREMENT, gegenstand_id INT);
 -- INSERT INTO t_item(id, gegenstand_id) VALUES (NULL, 1);

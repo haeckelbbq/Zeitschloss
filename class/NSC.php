@@ -102,7 +102,7 @@ class NSC
             //DB abfragen
             $sql = 'SELECT * FROM t_nsc WHERE spielfeld_id = :spielfeld_id';
             $sth = $dbh->prepare($sql);
-            $spielfeld_id = $spielfeld->getId();echo $spielfeld_id;
+            $spielfeld_id = $spielfeld->getId();
             $sth->bindParam('spielfeld_id', $spielfeld_id, PDO::PARAM_INT);
             $sth->execute();
             $nscs = $sth->fetchAll(PDO::FETCH_FUNC, 'NSC::buildFromPDO');
@@ -116,7 +116,8 @@ class NSC
         }
 
     }
-    public static function buildFromPDO(int $id, string $name, int $spielfeld_id, int $leben, int $ausdauer, int $schaden, int $schutz, int $typ) : NSC // buildFromPDO ruft den Klassenkonstuktor bei der Datenbankabfrage auf und erzeugt pro Tupel ein eigenes Objekt
+    public static function buildFromPDO(int $id, string $name, int $spielfeld_id, int $leben, int $ausdauer, int $schaden,
+                                        int $schutz, int $typ) : NSC // buildFromPDO ruft den Klassenkonstuktor bei der Datenbankabfrage auf und erzeugt pro Tupel ein eigenes Objekt
     {
         return new NSC($id, $name, $spielfeld_id, $leben, $ausdauer, $schaden, $schutz, $typ);
     }
