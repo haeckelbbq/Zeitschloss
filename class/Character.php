@@ -10,7 +10,7 @@ class Character
     private int $ausdauer;
     private int $schaden;
     private int $schutz;
-    private bool $geschlecht;
+    private string $geschlecht;
     private string $klasse;
     private int $attrSt;
     private int $attrGe;
@@ -35,7 +35,7 @@ class Character
      * @param int $ausdauer
      * @param int $schaden
      * @param int $schutz
-     * @param bool $geschlecht
+     * @param string $geschlecht
      * @param string $klasse
      * @param int $attrSt
      * @param int $attrGe
@@ -53,7 +53,7 @@ class Character
      */
 
     public function __construct(int $id, string $name, int $spielfeld_id, int $leben, int $ausdauer, int $schaden, int $schutz,
-                                bool $geschlecht, string $klasse, int $attrSt, int $attrGe, int $attrIn, int $attrWa, int $attrCh,
+                                string $geschlecht, string $klasse, int $attrSt, int $attrGe, int $attrIn, int $attrWa, int $attrCh,
                                 int $attrGl, int $fertigkeit1, int $fertigkeit2, string $talent1, string $talent2, int $ep,
                                 string $aktuelleWaffe, string $aktuelleRuest)
     {
@@ -135,7 +135,7 @@ class Character
     /**
      * @return bool
      */
-    public function isGeschlecht(): bool
+    public function getGeschlecht(): string
     {
         return $this->geschlecht;
     }
@@ -261,7 +261,7 @@ class Character
     }
 
     public static function buildFromPDO(int $id, string $name, int $spielfeld_id, int $leben, int $ausdauer, int $schaden,
-                                        int $schutz, bool $geschlecht, string $klasse, int $attrSt, int $attrGe, int $attrIn,
+                                        int $schutz, string $geschlecht, string $klasse, int $attrSt, int $attrGe, int $attrIn,
                                         int $attrWa, int $attrCh, int $attrGl, int $fertigkeit1, int $fertigkeit2,
                                         string $talent1, string $talent2, int $ep, string $aktuelleWaffe, string $aktuelleRuest)
                                         : Character // buildFromPDO ruft den Klassenkonstuktor bei der Datenbankabfrage auf und erzeugt pro Tupel ein eigenes Objekt
