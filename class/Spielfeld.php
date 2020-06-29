@@ -3,97 +3,78 @@
 
 class Spielfeld
 {
-
-    private int $posX;
-    private int $posY;
-    private int $posZ;
-    private int $posT;
-    private string $name;
+    private int $id;
+    private int $spielbrett_id;
     private bool $kartennebel;
+    private int $x;
+    private int $y;
+    private Gegenstand $gegenstand;
 
     /**
-     * @return bool
-     */
-    public function isKartennebel(): bool
-    {
-        return $this->kartennebel;
-    }
-
-    /**
+     * Spielfeld constructor.
+     * @param int $id
+     * @param int $spielbrett_id
      * @param bool $kartennebel
+     * @param int $x
+     * @param int $y
      */
-    public function setKartennebel(bool $kartennebel): void
+    public function __construct(int $id, int $spielbrett_id, bool $kartennebel, int $x, int $y)
     {
+        $this->id = $id;
+        $this->spielbrett_id = $spielbrett_id;
         $this->kartennebel = $kartennebel;
+        $this->x = $x;
+        $this->y = $y;
+        $this->loadGegenstand();
     }
 
     /**
-     * @return string
+     * @param Gegenstand $gegenstand
      */
-    public function getName(): string
+    public function setGegenstand(Gegenstand $gegenstand): void
     {
-        return $this->name;
+        $this->gegenstand = $gegenstand;
     }
 
     /**
-     * @param string $name
+     * @return int
      */
-    public function setName(string $name): void
+    public function getId(): int
     {
-        $this->name = $name;
+        return $this->id;
     }
 
-    public function getPosX(): int
-    {
-        return $this->posX;
-    }
-
-    public function setPosX(int $posX): void
-    {
-        $this->posX = $posX;
-    }
-
-    public function getPosY(): int
-    {
-        return $this->posY;
-    }
-
-    public function setPosY(int $posY): void
-    {
-        $this->posY = $posY;
-    }
-
-    public function getPosZ(): int
-    {
-        return $this->posZ;
-    }
-
-    public function setPosZ(int $posZ): void
-    {
-        $this->posZ = $posZ;
-    }
-
-    public function getPosT(): int
-    {
-        return $this->posT;
-    }
-
-    public function setPosT(int $posT): void
-    {
-        $this->posT = $posT;
-    }
-
-    public function __construct(int $posX, int $posY, int $posZ, int $posT, string $name, bool $kartennebel)
-    {
-        $this->posX = $posX;
-        $this->posY = $posY;
-        $this->posZ = $posZ;
-        $this->posT = $posT;
-        $this->name = $name;
-        $this->kartennebel = $kartennebel;
-    }
 
     public function aktualisieren() : void {
 
+    }
+    public static function loadSpielfelder(Spielbrett $spielbrett) : void
+    {
+
+        try
+        {
+            $dbh = Db::getConnection();
+            //DB abfragen
+            $sql = 'SELECT * FROM t_spielfeld WHERE spielbrett_id = :spielbrett_id';
+            $sth = $dbh->prepare($sql);
+            $spielbrett_id = $spielbrett->getId();
+            $sth->bindParam('spielbrett_id', $spielbrett_id, PDO::PARAM_INT);
+            $sth->execute();
+            $spielfelder = $sth->fetchAll(PDO::FETCH_FUNC, 'Spielfeld::buildFromPDO');
+            $spielbrett->setSpielfelder($spielfelder);
+        }
+        catch (PDOException $e)
+        {
+            echo 'Connection failed: ' . $e->getMessage();
+        }
+
+    }
+        public static function buildFromPDO(int $id, int $spielbrett_id, bool $kartennebel, int $x, int $y) : Spielfeld // buildFromPDO ruft den Klassenkonstuktor bei der Datenbankabfrage auf und erzeugt pro Tupel ein eigenes Objekt
+    {
+        return new Spielfeld($id, $spielbrett_id, $kartennebel, $x, $y);
+    }
+    private function loadGegenstand():void
+    {
+        Gegenstand::getGegenstandBySpielfeldId($this);
     }
 }
