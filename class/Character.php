@@ -238,6 +238,14 @@ class Character
         return $this->aktuelleRuest;
     }
 
+    /**
+     * @param int $spielfeld_id
+     */
+    public function setSpielfeldId(int $spielfeld_id): void
+    {
+        $this->spielfeld_id = $spielfeld_id;
+    }
+
     public static function getCharacterBySpielfeldId(Spielfeld $spielfeld): void
     {
         try
