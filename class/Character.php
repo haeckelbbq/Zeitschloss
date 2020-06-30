@@ -254,7 +254,7 @@ class Character
             //DB abfragen
             $sql = 'SELECT * FROM t_character WHERE spielfeld_id = :spielfeld_id';
             $sth = $dbh->prepare($sql);
-            $spielfeld_id = $spielfeld->getId();
+            $spielfeld_id = $spielfeld->getId(); // muss vordefiniert werden, da bindParam mit -> nicht umgehen kann
             $sth->bindParam('spielfeld_id', $spielfeld_id, PDO::PARAM_INT);
             $sth->execute();
             $characters = $sth->fetchAll(PDO::FETCH_FUNC, 'Character::buildFromPDO');
@@ -278,6 +278,31 @@ class Character
                             $attrGe, $attrIn, $attrWa, $attrCh, $attrGl, $fertigkeit1, $fertigkeit2, $talent1, $talent2, $ep,
                             $aktuelleWaffe, $aktuelleRuest);
     }
+
+    private static function update(int $spielfeld_id) : void
+    {
+        try {
+            $dbh = Db::getConnection();
+            $sql = 'UPDATE t_character
+                    SET spielfeld_id = :spielfeld_id
+                    WHERE id = 1;';
+            $sth = $dbh->prepare($sql); // $sth für PDOStatement (prepared Statement)
+            $sth->bindParam('spielfeld_id',$spielfeld_id,PDO::PARAM_INT);
+            $sth->execute();
+            $sth->execute();
+            $sth->execute();
+            $sth->execute();
+            $characters = $sth->fetchAll(PDO::FETCH_FUNC, 'Character::buildFromPDO');
+        } catch (PDOException $e) {
+            echo 'Connection failed: ' . $e->getMessage();
+        }
+    }
+
+    public static function updateCharacterposition(int $spielfeld_id) : void
+    {
+        Character::update($spielfeld_id);
+    }
+
 
     public function angreifen() : void {
 

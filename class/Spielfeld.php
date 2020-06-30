@@ -8,9 +8,17 @@ class Spielfeld
     private bool $kartennebel;
     private int $x;
     private int $y;
-    private Gegenstand $gegenstand;
+    private array $gegenstaende = [];
     private NSC $nsc;
     private Character $character;
+
+    /**
+     * @param array $gegenstaende
+     */
+    public function setGegenstaende(array $gegenstaende): void
+    {
+        $this->gegenstaende = $gegenstaende;
+    }
 
     /**
      * Spielfeld constructor.
@@ -20,6 +28,7 @@ class Spielfeld
      * @param int $x
      * @param int $y
      */
+
     public function __construct(int $id, int $spielbrett_id, bool $kartennebel, int $x, int $y)
     {
         $this->id = $id;
@@ -27,8 +36,8 @@ class Spielfeld
         $this->kartennebel = $kartennebel;
         $this->x = $x;
         $this->y = $y;
-        $this->loadGegenstand(0);
-        $this->loadGegenstand(1); //##
+        $this->loadGegenstaende();
+//        $this->loadGegenstand(1); //##
         $this->loadNSC();
         $this->loadCharacter();
     }
@@ -94,9 +103,9 @@ class Spielfeld
         return new Spielfeld($id, $spielbrett_id, $kartennebel, $x, $y);
     }
 
-    private function loadGegenstand($index):void
+    private function loadGegenstaende():void
     {
-        Gegenstand::getGegenstandBySpielfeldId($this, $index);
+        Gegenstand::getGegenstaendeBySpielfeld($this);
     }
 
     private function loadNSC():void

@@ -46,7 +46,7 @@ class Gegenstand
         return $this->spielfeld_id;
     }
 
-    public static function getGegenstandBySpielfeldId(Spielfeld $spielfeld, $index): void
+    public static function getGegenstaendeBySpielfeld(Spielfeld $spielfeld): void
     {
         try
         {
@@ -58,8 +58,8 @@ class Gegenstand
             $sth->bindParam('spielfeld_id', $spielfeld_id, PDO::PARAM_INT);
             $sth->execute();
             $gegenstaende = $sth->fetchAll(PDO::FETCH_FUNC, 'Gegenstand::buildFromPDO');
-            if (isset($gegenstaende[$index])){
-                $spielfeld->setGegenstand($gegenstaende[$index]);
+            if (isset($gegenstaende)){
+                $spielfeld->setGegenstaende($gegenstaende);
             }
         }
         catch (PDOException $e)
